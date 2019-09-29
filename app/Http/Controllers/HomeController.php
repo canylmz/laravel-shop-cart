@@ -15,6 +15,10 @@ class HomeController extends Controller
         $title = 'Larashop';
         $sub_title = 'Ürünler';
         $products = Product::all();
+//       $category =  Category::first();
+//       $category->products;
+
+
 
 //        dd( Product::all());
         return view('index', compact('title','sub_title', 'products'));

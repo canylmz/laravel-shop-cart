@@ -15,10 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+    Route::get('category', function () {
+
+    });
+    Route::get('brads', function () {
+
+    });
+});
+
 Route::get('/shopping-cart-add', function () {
     Cart::add(1, 'Macbook Pro', 2900, 1, array());
 
-    foreach (Cart::getContent() as $product){
+    foreach (Cart::getContent() as $product) {
         echo "Id: $product->id</br>";
         echo "Name: $product->name</br>";
         echo "Price $product->price</br>";
@@ -29,11 +41,11 @@ Route::get('/shopping-cart-add', function () {
 Route::get('/shopping-cart-update/{quantity}', function ($quantity) {
     Cart::add(1, 'Macbook Pro', 2900, 1, array());
 
-    Cart::update(1,[
+    Cart::update(1, [
         'quantity' => $quantity
     ]);
 
-    foreach (Cart::getContent() as $product){
+    foreach (Cart::getContent() as $product) {
         echo "Id: $product->id</br>";
         echo "Name: $product->name</br>";
         echo "Price: $product->price</br>";
